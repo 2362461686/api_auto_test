@@ -1,0 +1,43 @@
+name: 接口自动化测试
+
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 安装依赖
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest requests allure-pytest
+
+      - name: 运行自动化测试
+        run: |
+          cd auto_test
+          python -m pytest test_case/test_order_api.py -v --alluredir ./allure-results
+
+      - name: 安装 Allure
+        uses: simple-elf/allure-report-action@master
+        if: always()
+        with:
+          allure_history: allure-history
+          allure_results: auto_test/allure-results
+
+      - name: 发布报告
+        uses: peaceiris/actions-gh-pages@v3
+        if: always()
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: allure-history
