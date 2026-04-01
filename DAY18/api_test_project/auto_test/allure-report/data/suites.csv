@@ -1,0 +1,6 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"测试金额: 0.01","633","A003","test_case","2026-03-31","passed","2026-03-31","","test_order_api","",""
+"测试金额: 500","682","空ID","test_case","2026-03-31","passed","2026-03-31","","test_order_api","",""
+"测试金额: 500","815","A001","test_case","2026-03-31","passed","2026-03-31","","test_order_api","",""
+"测试金额: -100","615","A004","test_case","2026-03-31","passed","2026-03-31","","test_order_api","",""
+"测试金额: 1000","646","A002","test_case","2026-03-31","passed","2026-03-31","","test_order_api","",""
